@@ -3,6 +3,7 @@ package com.example.JTask;
 import com.example.JTask.Repository.OrderRepo;
 import com.example.JTask.model.Orders;
 import com.example.JTask.model.Product;
+import com.example.JTask.service.CustomerService;
 import com.example.JTask.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -21,7 +22,11 @@ public class JTaskApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(JTaskApplication.class, args);
 
 		OrderService service = context.getBean(OrderService.class);
+		CustomerService customerService = context.getBean(CustomerService.class);
 
+//		customerService.addCustomer(1,"jim");
+//		customerService.addCustomer(2,"jyo");
+//		customerService.addCustomer(3,"sub");
 
 }
 

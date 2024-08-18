@@ -11,8 +11,23 @@ import java.util.List;
 
 public interface OrderRepo extends JpaRepository<Orders,Integer> {
 
-    @Query(value = "SELECT * FROM orders WHERE order_id = ?", nativeQuery = true)
-    Orders findOrdersById( int id);
+    @Query(value = "SELECT * FROM orders WHERE order_id = :id", nativeQuery = true)
+    Orders findOrdersById(@Param("id") int id);
+
+
+    @Query(value = "select product_name from orders join product on orders.product = product.product_id where order_id= :id", nativeQuery = true)
+   String findProductName(@Param("id") int id);
+
+    @Query(value = "select order_date,product_name from orders join product on orders.product = product.product_id where order_id= :id", nativeQuery = true)
+    String findOrderDateProductName(@Param("id") int id);
+
+    @Query(value = "select order_date,product_name from orders join product on orders.product = product.product_id ", nativeQuery = true)
+    List<Object> findOrderDateProductNames();
+
+//    @Query(value = "select order_date,product_name from orders join product on orders.product = product.product_id ", nativeQuery = true)
+//    List<Object> findOrderDateProductNames();
+
+
 
 //    @Query(value= "select * from product")
 
