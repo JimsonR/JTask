@@ -1,10 +1,7 @@
 package com.example.JTask.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -22,6 +19,27 @@ public class Product {
 
     private String productType;
 
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] productImg;
+
+    private long productPrice;
+
+    public long getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(long productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public byte[] getProductImg() {
+        return productImg;
+    }
+
+    public void setProductImg(byte[] productImg) {
+        this.productImg = productImg;
+    }
 
     public String getProductName() {
         return productName;

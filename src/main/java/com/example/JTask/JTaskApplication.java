@@ -19,10 +19,12 @@ public class JTaskApplication {
 
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(JTaskApplication.class, args);
 
-		OrderService service = context.getBean(OrderService.class);
-		CustomerService customerService = context.getBean(CustomerService.class);
+			ConfigurableApplicationContext context = SpringApplication.run(JTaskApplication.class, args);
+
+
+//		OrderService service = context.getBean(OrderService.class);
+//		CustomerService customerService = context.getBean(CustomerService.class);
 
 //		customerService.addCustomer(1,"jim");
 //		customerService.addCustomer(2,"jyo");
