@@ -86,6 +86,26 @@ public List<CustomerProjection> printNotNullOrderDetails(List<OrderProductProjec
 //            nonNullFields.put("Order Status", order.getOrderStatus());
             projection.setOrderStatus(order.getOrderStatus());
         }
+        if (order.getReviewDate() != null) {
+//            nonNullFields.put("Order Status", order.getOrderStatus());
+            projection.setReviewDate(order.getReviewDate());
+        }
+        if (order.getRating() != null) {
+//            nonNullFields.put("Order Status", order.getOrderStatus());
+            projection.setRating(order.getRating());
+        }
+        if (order.getComment() != null) {
+//            nonNullFields.put("Order Status", order.getOrderStatus());
+            projection.setComment(order.getComment());
+        }
+        if (order.getWishlistId() != null) {
+//            nonNullFields.put("Order Status", order.getOrderStatus());
+            projection.setWishlistId(order.getWishlistId());
+        }
+        if(order.getProductPrice() !=null){
+            projection.setTotalPrice(order.getProductPrice());
+        }
+
         list1.add(projection);
     }
 return list1;

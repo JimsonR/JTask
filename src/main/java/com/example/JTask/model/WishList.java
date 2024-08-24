@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"customer_id","wishlist_id"}))
 public class WishList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,25 +19,14 @@ public class WishList {
     @JoinColumn(name = "customer_id")
     private Customers customer;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-    public int getWishlistId() {
-        return wishlistId;
-    }
-
-    public void setWishlistId(int wishlistId) {
-        this.wishlistId = wishlistId;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+    @ElementCollection
+    @CollectionTable(name = "wishlist_products", joinColumns = @JoinColumn(name = "wishlist_id"))
+    @Column(name = "product_id")
+//    @ManyToMany
+//    @JoinTable(name = "wishlist_product",
+//    joinColumns = @JoinColumn(name="wishlist_id"),
+//    inverseJoinColumns = @JoinColumn(name = "prod"))
+    private List<Integer> productId;
 
     public Customers getCustomer() {
         return customer;
@@ -45,12 +36,30 @@ public class WishList {
         this.customer = customer;
     }
 
+    public int getWishlistId() {
+        return wishlistId;
+    }
+
+    public void setWishlistId(int wishlistId) {
+        this.wishlistId = wishlistId;
+    }
+
+    public List<Integer> getProductId() {
+        return productId;
+    }
+
+    public void setProductId(List<Integer> productId) {
+        this.productId = productId;
+    }
+
     @Override
     public String toString() {
         return "WishList{" +
                 "wishlistId=" + wishlistId +
                 ", customer=" + customer +
-                ", product=" + product +
+                ", productId=" + productId +
                 '}';
     }
+
+
 }

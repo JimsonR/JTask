@@ -1,15 +1,16 @@
 package com.example.JTask.projection;
 
 import com.example.JTask.model.Customers;
+import com.example.JTask.model.Orders;
 import com.example.JTask.model.Product;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerProjection {
 
@@ -30,20 +31,40 @@ public class CustomerProjection {
 
     private String customerName;
 
-    public LocalDate getOrderDate() {
-        return orderDate;
+    private Integer wishlistId;
+
+    private Customers customer;
+
+    private Set<Orders> ordersList;
+
+
+
+    private List<Integer> products;
+
+    private Integer reviewId;
+
+    private Integer rating;
+
+    private String comment;
+
+    private LocalDate reviewDate;
+
+    private Long totalPrice;
+
+    public Set<Orders> getOrdersList() {
+        return ordersList;
     }
 
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
+    public void setOrdersList(Set<Orders> ordersList) {
+        this.ordersList = ordersList;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
+    public Long getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setTotalPrice(Long totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Integer getOrderId() {
@@ -54,20 +75,68 @@ public class CustomerProjection {
         this.orderId = orderId;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public String getComment() {
+        return comment;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public String getProductName() {
-        return productName;
+    public LocalDate getReviewDate() {
+        return reviewDate;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setReviewDate(LocalDate reviewDate) {
+        this.reviewDate = reviewDate;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public Integer getReviewId() {
+        return reviewId;
+    }
+
+    public void setReviewId(Integer reviewId) {
+        this.reviewId = reviewId;
+    }
+
+    public Integer getWishlistId() {
+        return wishlistId;
+    }
+
+    public void setWishlistId(Integer wishlistId) {
+        this.wishlistId = wishlistId;
+    }
+
+    public List<Integer> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Integer> products) {
+        this.products = products;
+    }
+
+    public Customers getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customers customer) {
+        this.customer = customer;
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
     public String getProductType() {
@@ -86,12 +155,36 @@ public class CustomerProjection {
         this.customerName = customerName;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     @Override

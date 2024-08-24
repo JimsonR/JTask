@@ -1,17 +1,15 @@
-package com.example.JTask.Exceptions;
+package com.example.JTask.exceptions;
 
-import com.example.JTask.model.Customers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(OrderNotFoundException.class)
-    public ResponseEntity<String> handleorderNotFoundException(OrderNotFoundException ex){
+    public ResponseEntity<String> handleOrderNotFoundException(OrderNotFoundException ex){
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
@@ -20,8 +18,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(NoProductException.class)
-    public ResponseEntity<String> handleNoProductException(NoProductException ex){
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<String> handleNoProductException(ProductNotFoundException ex){
         return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
     }
 

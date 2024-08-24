@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"product_id","customer_id"})})
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

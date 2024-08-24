@@ -4,6 +4,7 @@ import com.example.JTask.Repository.CustomerRepo;
 import com.example.JTask.Repository.OrderRepo;
 import com.example.JTask.Repository.ProductRepo;
 import com.example.JTask.model.Customers;
+import com.example.JTask.projection.CustomerProjection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,9 @@ public class CustomerService {
 
     return  customerRepo.save(customer);
     }
+
+
+
+
 
 }
